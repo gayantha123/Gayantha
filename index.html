@@ -1,0 +1,348 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gayantha Lochana - Creative Developer</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.7.1/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.7.1/ScrollTrigger.min.js"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+
+<body class="bg-gray-900 text-white">
+<!-- Navigation -->
+    <nav class="fixed w-full z-50 bg-gray-900 bg-opacity-90 backdrop-filter backdrop-blur-lg">
+        <div class="container mx-auto px-6 py-4">
+            <div class="flex items-center justify-between">
+                <div class="text-2xl font-bold">GL</div>
+                <div class="hidden md:flex space-x-8">
+                    <a href="#home" class="hover:text-purple-500 transition">Home</a>
+                    <a href="#about" class="hover:text-purple-500 transition">About</a>
+                    <a href="#work" class="hover:text-purple-500 transition">Work</a>
+                    <a href="#contact" class="hover:text-purple-500 transition">Contact</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="min-h-screen flex items-center justify-center relative overflow-hidden">
+        <div class="container mx-auto px-6 py-24 relative z-10">
+            <div class="text-center">
+                <h1 class="text-5xl md:text-7xl font-bold mb-6 animate-fade-in">
+                    Gayantha Lochana
+                </h1>
+                <p class="text-xl md:text-2xl text-gray-400 mb-8">
+                    Creative Developer | YouTuber | Designer
+                </p>
+                <div class="flex justify-center space-x-4">
+                    <a href="#work" class="bg-purple-600 hover:bg-purple-700 px-8 py-3 rounded-full transition">
+                        View My Work
+                    </a>
+                    <a href="#contact" class="border border-purple-600 hover:bg-purple-600 px-8 py-3 rounded-full transition">
+                        Contact Me
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="absolute inset-0 bg-gradient-to-b from-purple-900/20 to-gray-900"></div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-24">
+        <div class="container mx-auto px-6">
+            <h2 class="text-4xl font-bold mb-12 text-center">About Me</h2>
+            <div class="grid md:grid-cols-2 gap-12 items-center">
+                <div>
+                    <img src="images.jpg" class="rounded-lg shadow-2xl">
+                </div>
+                <div>
+                    <p class="text-gray-300 mb-6">
+                        I'm a multifaceted creator passionate about technology, content creation, and design. As a student
+                        and programmer, I'm constantly pushing the boundaries of what's possible in the digital space.
+                    </p>
+                    <div class="grid grid-cols-2 gap-4">
+                        <div class="bg-gray-800 p-4 rounded-lg">
+                            <h3 class="font-bold mb-2">Programming</h3>
+                            <p class="text-gray-400">Creating innovative solutions through code</p>
+                        </div>
+                        <div class="bg-gray-800 p-4 rounded-lg">
+                            <h3 class="font-bold mb-2">YouTube</h3>
+                            <p class="text-gray-400">Sharing knowledge and experiences</p>
+                        </div>
+                        <div class="bg-gray-800 p-4 rounded-lg">
+                            <h3 class="font-bold mb-2">Design</h3>
+                            <p class="text-gray-400">Crafting unique visual experiences</p>
+                        </div>
+                        <div class="bg-gray-800 p-4 rounded-lg">
+                            <h3 class="font-bold mb-2">Education</h3>
+                            <p class="text-gray-400">Continuous learning and growth</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Work Section -->
+    <section id="work" class="py-24 bg-gray-800">
+        <div class="container mx-auto px-6">
+            <h2 class="text-4xl font-bold mb-12 text-center">My Work</h2>
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="bg-gray-900 rounded-lg overflow-hidden">
+                    <img src="image1.png" alt="Project 1" class="w-full">
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2">Programming Projects</h3>
+                        <p class="text-gray-400">Innovative solutions and applications</p>
+                    </div>
+                </div>
+                <div class="bg-gray-900 rounded-lg overflow-hidden">
+                    <img src="image2.jpg" alt="Project 2" class="w-full">
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2">YouTube Content</h3>
+                        <p class="text-gray-400">Educational and entertaining videos</p>
+                    </div>
+                </div>
+                <div class="bg-gray-900 rounded-lg overflow-hidden">
+                    <img src="image3.jpg" alt="Project 3" class="w-full">
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2">Design Portfolio</h3>
+                        <p class="text-gray-400">Creative photo designs and artwork</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-24">
+        <div class="container mx-auto px-6">
+            <h2 class="text-4xl font-bold mb-12 text-center">Get in Touch</h2>
+            <div class="max-w-2xl mx-auto">
+                <form class="space-y-6">
+                    <div>
+                        <label class="block mb-2">Name</label>
+                        <input type="text" class="w-full px-4 py-3 bg-gray-800 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-600">
+                    </div>
+                    <div>
+                        <label class="block mb-2">Email</label>
+                        <input type="email" class="w-full px-4 py-3 bg-gray-800 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-600">
+                    </div>
+                    <div>
+                        <label class="block mb-2">Message</label>
+                        <textarea rows="4" class="w-full px-4 py-3 bg-gray-800 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-600"></textarea>
+                    </div>
+                    <button class="w-full bg-purple-600 hover:bg-purple-700 px-8 py-3 rounded-lg transition">
+                        Send Message
+                    </button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 py-12">
+        <div class="container mx-auto px-6 text-center">
+            
+
+
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scroll for navigation
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Initialize GSAP
+        gsap.registerPlugin(ScrollTrigger);
+
+        // Animations
+        gsap.from('.animate-fade-in', {
+            opacity: 0,
+            y: 50,
+            duration: 1,
+            ease: 'power3.out'
+        });
+
+        // Scroll animations
+        gsap.utils.toArray('section').forEach(section => {
+            gsap.from(section.children, {
+                opacity: 0,
+                y: 50,
+                duration: 1,
+                scrollTrigger: {
+                    trigger: section,
+                    start: 'top 80%',
+                    end: 'bottom 20%',
+                    toggleActions: 'play none none reverse'
+                }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<!-- Previous head section remains the same -->
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gayantha Lochana - Creative Developer</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.7.1/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.7.1/ScrollTrigger.min.js"></script>
+    <!-- Added Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        'primary': '#6D28D9',
+                        'secondary': '#4C1D95'
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-gray-900 text-white">
+    <!-- Previous sections (navigation, hero, about, work) remain the same -->
+    [Previous sections remain unchanged until contact section]
+
+    <!-- Updated Contact Section -->
+    <section id="contact" class="py-24">
+        <div class="container mx-auto px-6">
+            <h2 class="text-4xl font-bold mb-12 text-center">Get in Touch</h2>
+            
+            <!-- Contact Information -->
+            <div class="grid md:grid-cols-2 gap-12 max-w-6xl mx-auto mb-16">
+                <!-- Contact Form -->
+                <div class="space-y-6">
+                    <h3 class="text-2xl font-semibold mb-6">Send Message</h3>
+                    <form class="space-y-6">
+                        <div>
+                            <label class="block mb-2">Name</label>
+                            <input type="text" class="w-full px-4 py-3 bg-gray-800 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-600">
+                        </div>
+                        <div>
+                            <label class="block mb-2">Email</label>
+                            <input type="email" class="w-full px-4 py-3 bg-gray-800 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-600">
+                        </div>
+                        <div>
+                            <label class="block mb-2">Message</label>
+                            <textarea rows="4" class="w-full px-4 py-3 bg-gray-800 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-600"></textarea>
+                        </div>
+                        <button class="w-full bg-purple-600 hover:bg-purple-700 px-8 py-3 rounded-lg transition">
+                            Send Message
+                        </button>
+                    </form>
+                </div>
+
+                <!-- Contact Details -->
+                <div class="space-y-8">
+                    <h3 class="text-2xl font-semibold mb-6">Contact Information</h3>
+                    
+                    <!-- WhatsApp -->
+                    <div class="flex items-center space-x-4">
+                        <div class="w-12 h-12 bg-green-600 rounded-full flex items-center justify-center">
+                            <i class="fab fa-whatsapp text-2xl"></i>
+                        </div>
+                        <div>
+                            <h4 class="text-lg font-medium">WhatsApp</h4>
+                            <a href="https://wa.me/+94751168206" class="text-gray-400 hover:text-white transition">+94 75 116 8206</a>
+                        </div>
+                    </div>
+
+                    <!-- Phone -->
+                    <div class="flex items-center space-x-4">
+                        <div class="w-12 h-12 bg-purple-600 rounded-full flex items-center justify-center">
+                            <i class="fas fa-phone text-xl"></i>
+                        </div>
+                        <div>
+                            <h4 class="text-lg font-medium">Phone</h4>
+                            <a href="tel:YOUR_NUMBER" class="text-gray-400 hover:text-white transition">+94 75 116 8206</a>
+                        </div>
+                    </div>
+
+                    <!-- Address -->
+                    <div class="flex items-center space-x-4">
+                        <div class="w-12 h-12 bg-purple-600 rounded-full flex items-center justify-center">
+                            <i class="fas fa-map-marker-alt text-xl"></i>
+                        </div>
+                        <div>
+                            <h4 class="text-lg font-medium">Address</h4>
+                            <p class="text-gray-400">Rantetikanda,<br>Panagamuwa,<br>SRILANKA</p>
+                        </div>
+                    </div>
+
+                    <!-- Email -->
+                    <div class="flex items-center space-x-4">
+                        <div class="w-12 h-12 bg-purple-600 rounded-full flex items-center justify-center">
+                            <i class="fas fa-envelope text-xl"></i>
+                        </div>
+                        <div>
+                            <h4 class="text-lg font-medium">Email</h4>
+                            <a href="mailto:gmail" class="text-gray-400 hover:text-white transition">gayanthalochana70@gmail.com</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 py-12">
+        <div class="container mx-auto px-6 text-center">
+            <div class="flex justify-center space-x-6 mb-6">
+                <a href="#" class="text-gray-400 hover:text-white transition">
+                    <i class="fab fa-youtube text-2xl"></i>
+                </a>
+                <a href="#" class="text-gray-400 hover:text-white transition">
+                    <i class="fab fa-github text-2xl"></i>
+                </a>
+                <a href="#" class="text-gray-400 hover:text-white transition">
+                    <i class="fab fa-linkedin text-2xl"></i>
+                </a>
+                <a href="#" class="text-gray-400 hover:text-white transition">
+                    <i class="fab fa-instagram text-2xl"></i>
+                </a>
+            </div>
+            <p class="text-gray-400">© 2024 Gayantha Lochana. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Previous script section remains the same -->
+    [Previous scripts remain unchanged]
+</body>
+</html>
+
+
+ });
+        });
+    </script>
+</body>
+</html>
