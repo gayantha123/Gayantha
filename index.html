@@ -14,19 +14,65 @@
 </head>
 <body>
 
-<!-- ===== BOOT INTRO ===== -->
+<!-- ===== LIVE BACKGROUND ===== -->
+<div class="mesh-bg" aria-hidden="true">
+  <span class="blob blob-1"></span>
+  <span class="blob blob-2"></span>
+  <span class="blob blob-3"></span>
+</div>
+<canvas id="bg-canvas" aria-hidden="true"></canvas>
+<div class="grain" aria-hidden="true"></div>
+
+<!-- ===== CINEMATIC BOOT INTRO ===== -->
 <div id="boot-screen" aria-hidden="true">
-  <div class="boot-window">
-    <div class="boot-titlebar">
-      <span class="dot red"></span><span class="dot yellow"></span><span class="dot green"></span>
-      <span class="boot-titletext">gayantha@portfolio: ~</span>
+
+  <!-- Stage 0 — cursor -->
+  <div class="boot-stage boot-stage-cursor" id="stage-cursor">
+    <span class="mega-cursor"></span>
+  </div>
+
+  <!-- Stage 1 — terminal -->
+  <div class="boot-stage boot-stage-terminal" id="stage-terminal">
+    <div class="boot-window">
+      <div class="boot-titlebar">
+        <span class="dot red"></span><span class="dot yellow"></span><span class="dot green"></span>
+        <span class="boot-titletext">gayantha@portfolio: ~</span>
+      </div>
+      <div class="boot-body">
+        <p><span class="prompt">$</span> <span id="boot-line-1"></span></p>
+        <p><span class="prompt">$</span> <span id="boot-line-2"></span></p>
+        <p><span class="prompt">$</span> <span id="boot-line-3"></span></p>
+        <div class="boot-progress">
+          <div class="boot-progress-bar" id="boot-progress-bar"></div>
+        </div>
+        <p class="boot-status" id="boot-status"></p>
+      </div>
     </div>
-    <div class="boot-body">
-      <p><span class="prompt">$</span> <span id="boot-line-1"></span></p>
-      <p><span class="prompt">$</span> <span id="boot-line-2"></span></p>
-      <p><span class="prompt">$</span> <span id="boot-line-3"></span></p>
-      <p class="boot-status" id="boot-status"></p>
+  </div>
+
+  <!-- Stage 2 — compiling flythrough -->
+  <div class="boot-stage boot-stage-compile" id="stage-compile">
+    <div class="compile-scroll" id="compile-scroll"></div>
+    <div class="compile-overlay">
+      <div class="compile-percent" id="compile-percent">0%</div>
+      <div class="compile-label">building creative-portfolio.git</div>
     </div>
+  </div>
+
+  <!-- Stage 3 — logo assembly + glitch -->
+  <div class="boot-stage boot-stage-logo" id="stage-logo">
+    <div class="logo-build" id="logo-build">
+      <span class="logo-frag frag-lt">&lt;</span>
+      <span class="logo-frag frag-gl" data-text="GL">GL</span>
+      <span class="logo-frag frag-gt">/&gt;</span>
+    </div>
+    <p class="logo-tagline" id="logo-tagline">Gayantha Lochana</p>
+  </div>
+
+  <!-- Curtain wipe reveal -->
+  <div class="boot-curtain" aria-hidden="true">
+    <div class="curtain-panel curtain-left"></div>
+    <div class="curtain-panel curtain-right"></div>
   </div>
 </div>
 
@@ -34,6 +80,335 @@
 <a class="skip-link" href="#home">Skip to content</a>
 
 <!-- ===== TOP NAV — FILE TABS ===== -->
+<header id="site-header">
+  <div class="tabbar">
+    <div class="tabbar-brand">
+      <span class="brand-bracket">&lt;</span>GL<span class="brand-bracket">/&gt;</span>
+    </div>
+    <nav class="tabs" id="tabs">
+      <a href="#home" class="tab active" data-file="index.html">
+        <i class="fa-brands fa-html5 tab-icon" style="color:var(--peach)"></i>index.html
+      </a>
+      <a href="#about" class="tab" data-file="about.js">
+        <i class="fa-brands fa-js tab-icon" style="color:var(--yellow)"></i>about.js
+      </a>
+      <a href="#work" class="tab" data-file="work.py">
+        <i class="fa-brands fa-python tab-icon" style="color:var(--blue)"></i>work.py
+      </a>
+      <a href="#dashboard" class="tab" data-file="dashboard.tsx">
+        <i class="fa-solid fa-chart-line tab-icon" style="color:var(--mauve)"></i>dashboard.tsx
+      </a>
+      <a href="#contact" class="tab" data-file="contact.md">
+        <i class="fa-solid fa-file-lines tab-icon" style="color:var(--green)"></i>contact.md
+      </a>
+    </nav>
+    <button id="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+      <i class="fa-solid fa-bars"></i>
+    </button>
+  </div>
+</header>
+
+<main>
+  <!-- ===== HERO ===== -->
+  <section id="home" class="hero">
+    <div class="hero-spotlight" aria-hidden="true"></div>
+    <div class="hero-inner">
+      <p class="eyebrow"><span class="eyebrow-dot"></span> online now</p>
+      <h1 class="hero-title">
+        <span class="code-kw">const</span> developer <span class="code-op">=</span>
+        <br class="hero-break">
+        <span class="hero-name" id="typed-name"></span><span class="cursor" aria-hidden="true">|</span>
+      </h1>
+      <p class="hero-sub">Creative Developer <span class="sep">·</span> YouTuber <span class="sep">·</span> Designer — building things, breaking things, teaching what I learn along the way.</p>
+      <div class="hero-cta">
+        <a href="#work" class="btn btn-primary"><span class="btn-prompt">$</span> cd ./work</a>
+        <a href="#contact" class="btn btn-ghost"><span class="btn-prompt">$</span> contact --open</a>
+      </div>
+    </div>
+
+    <div class="hero-window" aria-hidden="true">
+      <div class="boot-titlebar">
+        <span class="dot red"></span><span class="dot yellow"></span><span class="dot green"></span>
+        <span class="boot-titletext">profile.json</span>
+      </div>
+      <pre class="code-block"><code><span class="code-punc">{</span>
+  <span class="code-key">"name"</span><span class="code-punc">:</span> <span class="code-str">"Gayantha Lochana Ranasinghe"</span><span class="code-punc">,</span>
+  <span class="code-key">"role"</span><span class="code-punc">:</span> <span class="code-str">"Programmer & Content Creator"</span><span class="code-punc">,</span>
+  <span class="code-key">"stack"</span><span class="code-punc">:</span> <span class="code-punc">[</span><span class="code-str">"JS"</span><span class="code-punc">,</span> <span class="code-str">"Python"</span><span class="code-punc">,</span> <span class="code-str">"Web"</span><span class="code-punc">]</span><span class="code-punc">,</span>
+  <span class="code-key">"platform"</span><span class="code-punc">:</span> <span class="code-str">"YouTube"</span><span class="code-punc">,</span>
+  <span class="code-key">"status"</span><span class="code-punc">:</span> <span class="code-str">"shipping"</span><span class="code-punc">,</span>
+  <span class="code-key">"basedIn"</span><span class="code-punc">:</span> <span class="code-str">"Sri Lanka"</span>
+<span class="code-punc">}</span></code></pre>
+    </div>
+
+    <div class="scroll-cue" aria-hidden="true"><span></span></div>
+  </section>
+
+  <!-- ===== ABOUT ===== -->
+  <section id="about" class="about">
+    <p class="section-eyebrow"><i class="fa-brands fa-js" style="color:var(--yellow)"></i> about.js</p>
+    <h2 class="section-title">Who's writing this code</h2>
+
+    <div class="about-grid">
+      <div class="about-window" aria-hidden="true">
+        <div class="boot-titlebar">
+          <span class="dot red"></span><span class="dot yellow"></span><span class="dot green"></span>
+          <span class="boot-titletext">bio.js</span>
+        </div>
+        <pre class="code-block"><code><span class="code-comment">// a quick intro</span>
+<span class="code-kw">function</span> <span class="code-fn">aboutMe</span><span class="code-punc">()</span> <span class="code-punc">{</span>
+  <span class="code-kw">return</span> <span class="code-str">`I'm a multi-hyphenate creator —</span>
+<span class="code-str">    programmer, YouTuber, designer.</span>
+<span class="code-str">    I like taking ideas from</span>
+<span class="code-str">    'sketch on a napkin' to</span>
+<span class="code-str">    'shipped and live', then</span>
+<span class="code-str">    teaching how I got there.`</span><span class="code-punc">;</span>
+<span class="code-punc">}</span></code></pre>
+      </div>
+
+      <div class="about-copy">
+        <p>I'm a multifaceted creator passionate about technology, content creation and design. As a student and programmer, I'm constantly pushing the boundaries of what's possible in the digital space — and documenting the process for anyone who wants to follow along.</p>
+
+        <div class="skill-grid">
+          <div class="skill-card">
+            <i class="fa-solid fa-code skill-icon" style="color:var(--mauve)"></i>
+            <h3>Programming</h3>
+            <p>Creating innovative solutions through code.</p>
+          </div>
+          <div class="skill-card">
+            <i class="fa-brands fa-youtube skill-icon" style="color:var(--red)"></i>
+            <h3>YouTube</h3>
+            <p>Sharing knowledge and experience, one video at a time.</p>
+          </div>
+          <div class="skill-card">
+            <i class="fa-solid fa-palette skill-icon" style="color:var(--peach)"></i>
+            <h3>Design</h3>
+            <p>Crafting unique, intentional visual experiences.</p>
+          </div>
+          <div class="skill-card">
+            <i class="fa-solid fa-graduation-cap skill-icon" style="color:var(--green)"></i>
+            <h3>Education</h3>
+            <p>Continuous learning, and passing it forward.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== WORK ===== -->
+  <section id="work" class="work">
+    <p class="section-eyebrow"><i class="fa-brands fa-python" style="color:var(--blue)"></i> work.py</p>
+    <h2 class="section-title">Recent commits</h2>
+
+    <div class="work-grid">
+      <article class="work-card">
+        <div class="work-card-top" style="background:var(--mauve)"></div>
+        <div class="work-card-body">
+          <p class="work-meta"><span class="commit-tag">feat</span> programming-projects</p>
+          <h3>Programming Projects</h3>
+          <p>Innovative solutions and full-scale applications, built from clean, efficient code.</p>
+        </div>
+      </article>
+      <article class="work-card">
+        <div class="work-card-top" style="background:var(--red)"></div>
+        <div class="work-card-body">
+          <p class="work-meta"><span class="commit-tag">feat</span> youtube-content</p>
+          <h3>YouTube Content</h3>
+          <p>Coding tutorials and tech breakdowns made to teach, not just show off.</p>
+        </div>
+      </article>
+      <article class="work-card">
+        <div class="work-card-top" style="background:var(--peach)"></div>
+        <div class="work-card-body">
+          <p class="work-meta"><span class="commit-tag">feat</span> design-portfolio</p>
+          <h3>Design Portfolio</h3>
+          <p>Creative photo design and artwork exploring bold, unconventional layouts.</p>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <!-- ===== DASHBOARD ===== -->
+  <section id="dashboard" class="dashboard">
+    <p class="section-eyebrow"><i class="fa-solid fa-chart-line" style="color:var(--mauve)"></i> dashboard.tsx</p>
+    <h2 class="section-title">Live from the workspace</h2>
+
+    <div class="dash-grid">
+      <!-- Contribution graph -->
+      <div class="dash-card dash-wide">
+        <div class="dash-card-head">
+          <span><i class="fa-solid fa-code-commit"></i> git-log.svg</span>
+          <span class="dash-tag">last 12 weeks</span>
+        </div>
+        <div class="contrib-grid" id="contrib-grid" aria-hidden="true"></div>
+        <div class="contrib-legend">
+          <span>less</span>
+          <span class="legend-swatch" data-level="0"></span>
+          <span class="legend-swatch" data-level="1"></span>
+          <span class="legend-swatch" data-level="2"></span>
+          <span class="legend-swatch" data-level="3"></span>
+          <span class="legend-swatch" data-level="4"></span>
+          <span>more</span>
+        </div>
+      </div>
+
+      <!-- Status widget — genuinely live -->
+      <div class="dash-card">
+        <div class="dash-card-head">
+          <span><i class="fa-solid fa-signal"></i> status.now</span>
+          <span class="dash-live"><span class="live-dot"></span> live</span>
+        </div>
+        <p class="dash-status-line"><span class="dash-status-dot"></span> Currently building <strong>this portfolio</strong></p>
+        <p class="dash-clock-label">Local time · Colombo, LK</p>
+        <p class="dash-clock" id="dash-clock">--:--:--</p>
+      </div>
+
+      <!-- Stats widget -->
+      <div class="dash-card">
+        <div class="dash-card-head">
+          <span><i class="fa-brands fa-youtube"></i> youtube.stats</span>
+          <span class="dash-tag">snapshot</span>
+        </div>
+        <div class="dash-stats">
+          <div class="dash-stat">
+            <span class="dash-stat-num" data-target="12400" id="stat-subs">0</span>
+            <span class="dash-stat-label">Subscribers</span>
+          </div>
+          <div class="dash-stat">
+            <span class="dash-stat-num" data-target="86" id="stat-videos">0</span>
+            <span class="dash-stat-label">Videos</span>
+          </div>
+          <div class="dash-stat">
+            <span class="dash-stat-num" data-target="540000" id="stat-views">0</span>
+            <span class="dash-stat-label">Total views</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Skills widget -->
+      <div class="dash-card dash-wide">
+        <div class="dash-card-head">
+          <span><i class="fa-solid fa-layer-group"></i> skills.json</span>
+          <span class="dash-tag">proficiency</span>
+        </div>
+        <div class="skill-bars">
+          <div class="skill-bar-row">
+            <span>JavaScript</span>
+            <div class="skill-bar-track"><div class="skill-bar-fill" style="--pct:88%; background:var(--yellow)"></div></div>
+          </div>
+          <div class="skill-bar-row">
+            <span>Python</span>
+            <div class="skill-bar-track"><div class="skill-bar-fill" style="--pct:75%; background:var(--blue)"></div></div>
+          </div>
+          <div class="skill-bar-row">
+            <span>HTML / CSS</span>
+            <div class="skill-bar-track"><div class="skill-bar-fill" style="--pct:92%; background:var(--peach)"></div></div>
+          </div>
+          <div class="skill-bar-row">
+            <span>Video Editing</span>
+            <div class="skill-bar-track"><div class="skill-bar-fill" style="--pct:80%; background:var(--mauve)"></div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== CONTACT ===== -->
+  <section id="contact" class="contact">
+    <p class="section-eyebrow"><i class="fa-solid fa-file-lines" style="color:var(--green)"></i> contact.md</p>
+    <h2 class="section-title">Let's build something</h2>
+
+    <div class="contact-grid">
+      <form class="contact-form" id="contact-form">
+        <label for="name">$ name</label>
+        <input type="text" id="name" name="name" placeholder="jane_doe" required>
+
+        <label for="email">$ email</label>
+        <input type="email" id="email" name="email" placeholder="jane@example.com" required>
+
+        <label for="message">$ message</label>
+        <textarea id="message" name="message" rows="5" placeholder="Tell me about your idea..." required></textarea>
+
+        <button type="submit" class="btn btn-primary btn-block">
+          <span class="btn-prompt">$</span> send --now
+        </button>
+        <p class="form-note" id="form-note" role="status" aria-live="polite"></p>
+      </form>
+
+      <div class="contact-info">
+        <a class="info-row" href="https://wa.me/94751168206" target="_blank" rel="noopener">
+          <span class="info-icon" style="background:#25d366"><i class="fa-brands fa-whatsapp"></i></span>
+          <span><strong>WhatsApp</strong><br>+94 75 116 8206</span>
+        </a>
+        <a class="info-row" href="tel:+94751168206">
+          <span class="info-icon" style="background:var(--mauve)"><i class="fa-solid fa-phone"></i></span>
+          <span><strong>Phone</strong><br>+94 75 116 8206</span>
+        </a>
+        <div class="info-row">
+          <span class="info-icon" style="background:var(--blue)"><i class="fa-solid fa-location-dot"></i></span>
+          <span><strong>Address</strong><br>Rantetikanda, Panagamuwa, Sri Lanka</span>
+        </div>
+        <a class="info-row" href="mailto:gayanthalochana70@gmail.com">
+          <span class="info-icon" style="background:var(--yellow)"><i class="fa-solid fa-envelope"></i></span>
+          <span><strong>Email</strong><br>gayanthalochana70@gmail.com</span>
+        </a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<!-- ===== SOCIAL DOCK ===== -->
+<nav class="social-dock" aria-label="Social media">
+  <a href="https://facebook.com" target="_blank" rel="noopener" class="dock-btn dock-fb" aria-label="Facebook">
+    <i class="fa-brands fa-facebook-f"></i>
+  </a>
+  <a href="https://tiktok.com" target="_blank" rel="noopener" class="dock-btn dock-tt" aria-label="TikTok">
+    <i class="fa-brands fa-tiktok"></i>
+  </a>
+  <a href="https://youtube.com" target="_blank" rel="noopener" class="dock-btn dock-yt" aria-label="YouTube">
+    <i class="fa-brands fa-youtube"></i>
+  </a>
+  <a href="https://github.com" target="_blank" rel="noopener" class="dock-btn dock-gh" aria-label="GitHub">
+    <i class="fa-brands fa-github"></i>
+  </a>
+</nav>
+
+<!-- ===== FOOTER / OUTRO ===== -->
+<footer id="site-footer">
+  <div class="footer-window" aria-hidden="true">
+    <div class="boot-titlebar">
+      <span class="dot red"></span><span class="dot yellow"></span><span class="dot green"></span>
+      <span class="boot-titletext">session</span>
+    </div>
+    <div class="boot-body">
+      <p><span class="prompt">$</span> <span id="outro-line"></span><span class="cursor">|</span></p>
+    </div>
+  </div>
+
+  <div class="footer-links">
+    <a href="https://web.facebook.com/profile.php?id=61578651953376" target="_blank" rel="noopener"><i class="fa-brands fa-facebook-f"></i></a>
+    <a href="https://www.tiktok.com/@g_zer2" target="_blank" rel="noopener"><i class="fa-brands fa-tiktok"></i></a>
+    <a href="https://www.youtube.com/@gayantha-lochana" target="_blank" rel="noopener"><i class="fa-brands fa-youtube"></i></a>
+    <a href="https://github.com/gayanthalochana28-art" target="_blank" rel="noopener"><i class="fa-brands fa-github"></i></a>
+  </div>
+  <p class="footer-copy">© 2026 Gayantha Lochana Ranasinghe · commit <span class="commit-hash">a1b2c3d</span> · all rights reserved</p>
+</footer>
+
+<!-- ===== LIVE STATUS BAR (like an editor's bottom bar) ===== -->
+<div class="status-bar" id="status-bar">
+  <span class="status-item status-branch"><i class="fa-solid fa-code-branch"></i> main</span>
+  <span class="status-item" id="status-file">index.html</span>
+  <span class="status-item status-spacer"></span>
+  <span class="status-item" id="status-position">Ln 1, Col 1</span>
+  <span class="status-item">UTF-8</span>
+  <span class="status-item status-live"><span class="live-dot"></span> live</span>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script src="script.js"></script>
+</body>
+</html>
 <header id="site-header">
   <div class="tabbar">
     <div class="tabbar-brand">
